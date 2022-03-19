@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-const links = [
-  { href: '/', label: 'Route 1' },
-  { href: '/', label: 'Route 2' },
-];
+// const links = [
+//   { href: '/', label: 'Route 1' },
+//   { href: '/', label: 'Route 2' },
+// ];
 
 export default function Header() {
   return (
@@ -16,13 +16,16 @@ export default function Header() {
         </UnstyledLink>
         <nav>
           <ul className='flex items-center justify-between space-x-4'>
-            {links.map(({ href, label }) => (
+            {/* {links.map(({ href, label }) => (
               <li key={`${href}${label}`}>
                 <UnstyledLink href={href} className='hover:text-gray-600'>
                   {label}
                 </UnstyledLink>
               </li>
-            ))}
+            ))} */}
+            {/* <button className='m-1 bg-green-500 px-4 py-2 hover:bg-blue-500'>
+              Login
+            </button> */}
           </ul>
         </nav>
       </div>
