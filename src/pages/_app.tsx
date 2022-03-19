@@ -1,8 +1,12 @@
 import { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
 
 import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
+
+import AuthWrapper from '@/components/AuthWrapper';
+import Header from '@/components/layout/Header';
 
 /**
  * !STARTERCONF info
@@ -10,7 +14,14 @@ import '@/styles/colors.css';
  */
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <SessionProvider session={pageProps.session}>
+      <AuthWrapper>
+        <Header />
+        <Component {...pageProps} />
+      </AuthWrapper>
+    </SessionProvider>
+  );
 }
 
 export default MyApp;

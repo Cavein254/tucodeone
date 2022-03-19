@@ -1,13 +1,22 @@
+import { signIn, signOut, useSession } from 'next-auth/react';
 import * as React from 'react';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
-
 // const links = [
 //   { href: '/', label: 'Route 1' },
 //   { href: '/', label: 'Route 2' },
 // ];
 
 export default function Header() {
+  const { data, status } = useSession();
+
+  const handleSignIn = async () => {
+    await signIn('google', { callbackUrl: process.env.CALLBACKURL });
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+  };
   return (
     <header className='sticky top-0 z-50 bg-white'>
       <div className='layout flex h-14 items-center justify-between'>
@@ -23,9 +32,21 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))} */}
-            <button className='m-1 bg-green-500 px-4 py-2 hover:bg-blue-500'>
-              Login
-            </button>
+            {status ? (
+              <button
+                onClick={handleSignOut}
+                className='m-1 bg-red-500 px-4 py-2 hover:bg-green-500'
+              >
+                Sign Out
+              </button>
+            ) : (
+              <button
+                onClick={handleSignIn}
+                className='m-1 bg-green-500 px-4 py-2 hover:bg-blue-500'
+              >
+                Login
+              </button>
+            )}
           </ul>
         </nav>
       </div>
