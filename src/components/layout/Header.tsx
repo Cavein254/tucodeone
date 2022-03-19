@@ -23,9 +23,9 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))} */}
-            {/* <button className='m-1 bg-green-500 px-4 py-2 hover:bg-blue-500'>
+            <button className='m-1 bg-green-500 px-4 py-2 hover:bg-blue-500'>
               Login
-            </button> */}
+            </button>
           </ul>
         </nav>
       </div>
